@@ -100,9 +100,9 @@ minetest.register_globalstep(function(dtime)
 		timer2 = 0
 		for _,player in ipairs(players) do
 			local player_inv = player:get_inventory()
-			if player_inv:contains_item("t1_from", "stella:resource_1") then
-				stella.stella_inv:remove_item("t1_from", "stella:resource_1 3")
-				player_inv:remove_item("t1_from", "stella:resource_1 3")
+			if player_inv:contains_item("t1_from", "stella:resource_3") then
+				stella.stella_inv:remove_item("t1_from", "stella:resource_3")
+				player_inv:remove_item("t1_from", "stella:resource_3")
 				player_inv:add_item("inv", "stella:resource_3")
 				stella.stella_inv:add_item("inv", "stella:resource_3")
 				player:set_inventory_formspec(stella.invget_formspec(player))
@@ -115,9 +115,9 @@ minetest.register_globalstep(function(dtime)
 		timer3 = 0
 		for _,player in ipairs(players) do
 			local player_inv = player:get_inventory()
-			if player_inv:contains_item("s1_from", "stella:resource_2") then
-				stella.stella_inv:remove_item("s1_from", "stella:resource_2 5")
-				player_inv:remove_item("s1_from", "stella:resource_2 5")
+			if player_inv:contains_item("s1_from", "stella:resource_4") then
+				stella.stella_inv:remove_item("s1_from", "stella:resource_4")
+				player_inv:remove_item("s1_from", "stella:resource_4")
 				player_inv:add_item("inv", "stella:resource_4")
 				stella.stella_inv:add_item("inv", "stella:resource_4")
 				player:set_inventory_formspec(stella.invget_formspec(player))

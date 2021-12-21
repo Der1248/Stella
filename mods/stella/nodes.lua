@@ -56,7 +56,7 @@ minetest.register_node("stella:timber1", {
 		{0, -1.16667, -0.5, 1, 0.83333, 0.5}
 	},
 	collision_box = {type = "fixed",fixed = 
-		{}
+		{0, -1.16667, -0.5, 1, 0.83333, 0.5}
 	},
 	on_punch = function(pos, node, player, pointed_thing)
 		minetest.show_formspec(player:get_player_name(), "timber1" , stella.timber1get_formspec(player))
@@ -74,7 +74,7 @@ minetest.register_node("stella:pick_1", {
 		{0, -1.16667, -0.25, 1, 0.83333, 0.75}
 	},
 	collision_box = {type = "fixed",fixed = 
-		{}
+		{0, -1.16667, -0.25, 1, 0.83333, 0.75}
 	},
 	on_punch = function(pos, node, player, pointed_thing)
 		minetest.show_formspec(player:get_player_name(), "pick1" , stella.shop1get_formspec(player))
@@ -92,7 +92,7 @@ minetest.register_node("stella:shop1", {
 		{0, -1.16667, -1, 1, 0.83333, 0}
 	},
 	collision_box = {type = "fixed",fixed = 
-		{}
+		{0, -1.16667, -1, 1, 0.83333, 0}
 	},
 	on_punch = function(pos, node, player, pointed_thing)
 		minetest.show_formspec(player:get_player_name(), "shop1" , stella.shop1get_formspec(player))
@@ -110,7 +110,7 @@ minetest.register_node("stella:smith1", {
 		{0, -0.83333, -0.5, 1, 1.16667, 0.5}
 	},
 	collision_box = {type = "fixed",fixed = 
-		{}
+		{0, -0.83333, -0.5, 1, 1.16667, 0.5}
 	},
 	on_punch = function(pos, node, player, pointed_thing)
 		minetest.show_formspec(player:get_player_name(), "smith1" , stella.smith1get_formspec(player))
