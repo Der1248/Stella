@@ -2,7 +2,7 @@ local box2 = get_nodebox()[1]
 local box4 = get_nodebox()[2]
 local box6 = get_nodebox()[3]
 local boxg = get_nodebox()[4]
-for j=1,2 do
+for j=1,3 do
 	for i=1,14 do
 		minetest.register_node(minetest.get_current_modname()..":block_"..j.."_2_"..i,{
 			description = "Sector "..j.." Block 2."..i,

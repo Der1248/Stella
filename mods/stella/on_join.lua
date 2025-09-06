@@ -1,4 +1,5 @@
 stella.hud = {}
+local map_version = 2
 minetest.register_on_joinplayer(function(player)
 	player:set_attribute("1.1.1.0", "y")
 	if player:get_player_name() == "singleplayer" then
@@ -14,45 +15,32 @@ minetest.register_on_joinplayer(function(player)
 	player:set_formspec_prepend(formspec)
 	player:set_inventory_formspec(stella.invget_formspec(player))
 	stella.stella_inv:set_size("inv", 40)
-	stella.hud["1"] = player:hud_add({
-		hud_elem_type = "waypoint",
-		number = 0xFFFFFF ,
-		world_pos = {x=0, y=0, z=0},
-		precision = 0,
-		name = "",
-	})
-	stella.hud["2"] = player:hud_add({
-		hud_elem_type = "waypoint",
-		number = 0xFFFFFF ,
-		world_pos = {x=0, y=0, z=0},
-		precision = 0,
-		name = "",
-	})
-	stella.hud["3"] = player:hud_add({
-		hud_elem_type = "waypoint",
-		number = 0xFFFFFF ,
-		world_pos = {x=0, y=0, z=0},
-		precision = 0,
-		name = "",
-	})
-	stella.hud["4"] = player:hud_add({
-		hud_elem_type = "waypoint",
-		number = 0xFFFFFF ,
-		world_pos = {x=0, y=0, z=0},
-		precision = 0,
-		name = "",
-	})
-	stella.hud["5"] = player:hud_add({
-		hud_elem_type = "waypoint",
-		number = 0xFFFFFF ,
-		world_pos = {x=0, y=0, z=0},
-		precision = 0,
-		name = "",
-	})
 	update_tasks(player)
 	if file_check(minetest.get_worldpath().."/Map_Version.txt") == false then
+		minetest.after(1, update, player:get_player_name())
 		file = io.open(minetest.get_worldpath().."/Map_Version.txt", "w")
 		file:write("1")
 		file:close()
 	end
+	local file = io.open(minetest.get_worldpath().."/Map_Version.txt", "r")
+	local map_ver = file:read("*l")
+    file:close()
+	if tonumber(map_ver) < map_version then
+		minetest.after(1, update, player:get_player_name())
+		local file = io.open(minetest.get_worldpath().."/Map_Version.txt", "w")
+		file:write(map_version)
+		file:close()
+	end
+	local active_now = get_active_tasks(player)
+	local activ = {}
+	for activCount = 1, #active_now do
+		atr = minetest.deserialize(player:get_attribute(active_now[activCount]))
+		if atr ~= nil then
+			table.insert(activ,{active_now[activCount],atr[1],atr[2],atr[3],atr[4]})
+		else
+			table.insert(activ,{active_now[activCount],0,0,0,0})
+		end
+	end
+	player:set_attribute("activ_task", minetest.serialize(activ))
 end)
+
